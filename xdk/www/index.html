@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Left Side Menu App template</title>
+<!--
+    This template can be used for simple app with left side menu that can be opened to switch views, for applications like Youtube App or Gmail app.
+-->  
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+    
+    <link rel="stylesheet" type="text/css" href="appframework/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="appframework/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="appframework/appframework.ui.min.js"></script>
+    <!--AppFramework plugin for sliding side menu-->
+    <script type="text/javascript" charset="utf-8" src="appframework/plugins/af.slidemenu.js"></script>
+    <script src="appframework/idex.js"></script>
+    <!-- phantom library, needed for XDK "legacy" container api calls -->
+    <script src="intelxdk.js"></script>
+    <!-- phantom library, needed for Cordova api calls -->
+    <script src="cordova.js"></script>
+    <!-- phantom library, needed for XDK "legacy" container CORS -->
+    <script src="xhr.js"></script>
+    
+    <script>
+        var onDeviceReady=function(){                             // called when Cordova is ready
+           if( window.Cordova && navigator.splashscreen ) {     // Cordova API detected
+               $.ui.launch(); 
+               navigator.splashscreen.hide() ;                 // hide splash screen
+            }
+        } ;
+        document.addEventListener("deviceready", onDeviceReady, false) ;
+    </script>
+    
+    <script>   
+        $.ui.autoLaunch = false;
+        $.ui.animateHeaders = false;
+                
+        $(document).ready(function(){
+            $.ui.setSideMenuWidth('260px');
+            $.ui.launch();
+        });
+    </script>
+</head>
+<body> 
+<div id="afui">
+    
+    <!--Left Side Menu Navigation bar -->
+    <nav>
+        <ul class="list">
+            <li><a id="client" href="#page1" class="icon home">Clientes</a></li>
+            <li><a id="products" href="#page2" class="icon heart">Productos</a></li>
+            <li><a id="sales" href="#page3" class="icon chat">Ventas</a></li>
+        </ul>
+    </nav>
+    
+    <div id="content" style=""> 
+        
+    <!--Main View Pages-->
+        <div class="panel" title="Home" id="page1" data-footer="none" selected="true">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Clientes</h1>
+            </header>
+            <div><h2><b> Clientes </b></h2>
+                <div id="clientes"></div>
+            </div>
+        </div>
+        
+        <div class="panel" title="Favorites" id="page2" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Productos</h1>
+            </header>
+            <div><h2><b> Productos </b></h2>
+                <div id="productos"></div>
+            </div>
+        </div>
+        
+        <div class="panel" title="Messages" id="page3" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Ventas</h1>
+            </header>
+            <div><h2><b> Ventas </b></h2>
+                <div id="ventas"></div>
+            </div>
+        </div>
+        
+        <div class="panel" title="Profile" id="page4" data-footer="none">
+            <header>
+                <a id="menubadge" onclick='$.ui.toggleSideMenu()' class='menuButton' style="float:left !important"></a>
+                <h1>Profile</h1>
+            </header>
+            <p>This is view for fourth menu item</p>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>    

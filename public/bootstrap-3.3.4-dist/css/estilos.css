@@ -1,0 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+.varela{font-family: 'Varela Round', sans-serif;}
+body{color: #707070 !important;}
+
+.jumbotron{
+    box-shadow: 10px 10px 100px #888888;
+    font-size: 100%;
+}
